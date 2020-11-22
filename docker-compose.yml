@@ -9,7 +9,7 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - ./db/mysql/volumes:/var/lib/mysql
+            - db:/var/lib/mysql
 
     web:
         build: .
@@ -25,4 +25,5 @@ services:
         stdin_open: true
 
 volumes:
+  db:
   gem_data:
