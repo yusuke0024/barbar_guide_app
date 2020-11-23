@@ -1,0 +1,12 @@
+<h1>サロン新規登録</h1>
+<%= form_with model: @salon, local: true do |f| %>
+  <div>
+    <%= f.label :name, "サロン名" %>
+    <%= f.text_field :name %>
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
