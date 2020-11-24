@@ -6,7 +6,7 @@ class SalonsController < ApplicationController
   def create
     @salon = Salon.new(salon_params)
     if @salon.save
-      
+      redirect_to new_salon_path
     else
       render :new
     end
