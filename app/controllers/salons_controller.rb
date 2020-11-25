@@ -1,4 +1,8 @@
 class SalonsController < ApplicationController
+  def index
+    @salons = Salon.all
+  end
+
   def new
     @salon = Salon.new
   end
