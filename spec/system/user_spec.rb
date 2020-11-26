@@ -6,12 +6,13 @@ RSpec.describe "User", type: :system do
     let(:name) { "" }
 
     it "ユーザー登録に失敗すること" do
+      visit new_user_path
       fill_in "user_name", with: name
       fill_in "user_email", with: "example@mail.com"
       fill_in "user_password", with: "foobar"
-      click_on "投稿"
+      click_on "登録"
 
-      expect(page).to have_content "Content can't be blank"
+      expect(page).to have_content "Name can't be blank"
     end
   end
 end
