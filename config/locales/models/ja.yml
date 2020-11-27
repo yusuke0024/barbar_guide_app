@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      salon: サロン
+    attributes:
+      salon:
+        name: サロン名
+        adress: 住所
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
