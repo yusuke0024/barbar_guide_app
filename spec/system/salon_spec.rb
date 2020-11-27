@@ -14,7 +14,7 @@ RSpec.describe "Salon", type: :system do
         click_on "登録"
       end
     end
-    
+
     context "サロン名入力フォームが空白のとき" do
       let(:name) { "" }
 
@@ -27,7 +27,7 @@ RSpec.describe "Salon", type: :system do
       end
     end
 
-    context "サロン名が２０文字以上のとき" do
+    context "サロン名が21文字以上のとき" do
       let(:name) { "宇宙で一番名前が長いのでどんな名前やねんそれ、ほんまにヘアサロンか？とツッコミがくるお店" }
 
       it "エラーになること" do
@@ -51,7 +51,7 @@ RSpec.describe "Salon", type: :system do
       end
     end
 
-    context "住所が150文字以上のとき" do
+    context "住所が151文字以上のとき" do
       let(:address) { "東京" * 100 }
 
       it "エラーになること" do
