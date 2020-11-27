@@ -39,4 +39,17 @@ RSpec.describe "Salon", type: :system do
       expect(page).to have_content "住所を入力してください"
     end
   end
+
+  context "住所が150文字以上のとき" do
+    let(:address) { "東京" * 100 }
+
+    it "サロン登録に失敗すること" do
+      visit new_salon_path
+      fill_in "salon_name", with: "THE BAR BER"
+      fill_in "salon_address", with: address
+      click_on "登録"
+
+      expect(page).to have_content "住所は150文字以内で入力してください"
+    end
+  end
 end
