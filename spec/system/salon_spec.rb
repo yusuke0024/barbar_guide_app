@@ -7,6 +7,14 @@ RSpec.describe "Salon", type: :system do
       visit new_salon_path
     end
 
+    context "サロン名が20文字以内で住所が150文字以内で入力されているとき" do
+      it "正常に登録されること" do
+        fill_in "salon_name", with: salon.name
+        fill_in "salon_address", with: salon.address
+        click_on "登録"
+      end
+    end
+    
     context "サロン名入力フォームが空白のとき" do
       let(:name) { "" }
 
