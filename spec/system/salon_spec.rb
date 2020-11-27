@@ -2,11 +2,14 @@ require "rails_helper"
 RSpec.describe "Salon", type: :system do
   let(:salon) { FactoryBot.create(:salon) }
 
+  before do
+    visit new_salon_path
+  end
+  
   context "サロン名入力フォームが空白のとき" do
     let(:name) { "" }
 
     it "サロン登録に失敗すること" do
-      visit new_salon_path
       fill_in "salon_name", with: name
       fill_in "salon_address", with: salon.address
       click_on "登録"
@@ -19,7 +22,6 @@ RSpec.describe "Salon", type: :system do
     let(:name) { "宇宙で一番名前が長いのでどんな名前やねんそれ、ほんまにヘアサロンか？とツッコミがくるお店" }
 
     it "サロン登録に失敗すること" do
-      visit new_salon_path
       fill_in "salon_name", with: name
       fill_in "salon_address", with: salon.address
       click_on "登録"
@@ -32,7 +34,6 @@ RSpec.describe "Salon", type: :system do
     let(:address) { "" }
 
     it "サロン登録に失敗すること" do
-      visit new_salon_path
       fill_in "salon_name", with: salon.name
       fill_in "salon_address", with: address
       click_on "登録"
@@ -45,7 +46,6 @@ RSpec.describe "Salon", type: :system do
     let(:address) { "東京" * 100 }
 
     it "サロン登録に失敗すること" do
-      visit new_salon_path
       fill_in "salon_name", with: salon.name
       fill_in "salon_address", with: address
       click_on "登録"
