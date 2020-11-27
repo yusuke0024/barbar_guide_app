@@ -2,13 +2,11 @@ ja:
   activerecord:
     models:
       salon: サロン
+      user: ユーザー
     attributes:
       salon:
         name: サロン名
-        adress: 住所
-    models:
-      user: ユーザー
-    attributes:
+        address: 住所
       user:
         name: ユーザー名
         email: メールアドレス
