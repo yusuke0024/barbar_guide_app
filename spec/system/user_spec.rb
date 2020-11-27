@@ -12,7 +12,7 @@ RSpec.describe "User", type: :system do
       fill_in "user_password", with: "foobar"
       click_on "登録"
 
-      expect(page).to have_content "Name can't be blank"
+      expect(page).to have_content "ユーザー名を入力してください"
     end
   end
   
@@ -26,7 +26,7 @@ RSpec.describe "User", type: :system do
       fill_in "user_password", with: "foobar"
       click_on "登録"
 
-      expect(page).to have_content "Name is too long (maximum is 50 characters)"
+      expect(page).to have_content "ユーザー名は50文字以内で入力してください"
     end
   end
 end
