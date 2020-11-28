@@ -11,7 +11,7 @@ RSpec.describe "User", type: :system do
     context "ユーザー名入力フォームが空白のとき" do
       let(:name) { "" }
 
-      it "ユーザー登録に失敗すること" do
+      it "エラーになること" do
         fill_in "user_name", with: name
         fill_in "user_email", with: user.email
         fill_in "user_password", with: user.password
@@ -24,7 +24,7 @@ RSpec.describe "User", type: :system do
     context "ユーザー名が５０文字以上のとき" do
       let(:name) { "じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじ" }
 
-      it "ユーザー登録に失敗すること" do
+      it "エラーになること" do
         fill_in "user_name", with: name
         fill_in "user_email", with: user.email
         fill_in "user_password", with: user.password
@@ -37,7 +37,7 @@ RSpec.describe "User", type: :system do
     context "メールアドレスが空白のとき" do
       let(:email) { "" }
 
-      it "ユーザー登録に失敗すること" do
+      it "エラーになること" do
         fill_in "user_name", with: user.name
         fill_in "user_email", with: email
         fill_in "user_password", with: user.password
