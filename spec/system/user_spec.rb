@@ -4,7 +4,9 @@ RSpec.describe "User", type: :system do
   describe "ユーザー登録機能" do
 
     before do
+      #新規ユーザー登録ページ
       visit new_user_path
+      #正常範囲の入力値を入力
       fill_in "user_name", with: "yusuke"
       fill_in "user_email", with: "example@mail.com"
       fill_in "user_password", with: "foobar"
