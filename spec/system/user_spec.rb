@@ -3,11 +3,14 @@ require "rails_helper"
 RSpec.describe "User", type: :system do
   describe "ユーザー登録機能" do
 
+    before do
+      visit new_user_path
+    end
+
     context "ユーザー名入力フォームが空白のとき" do
       let(:name) { "" }
 
       it "ユーザー登録に失敗すること" do
-        visit new_user_path
         fill_in "user_name", with: name
         fill_in "user_email", with: "example@mail.com"
         fill_in "user_password", with: "foobar"
@@ -21,7 +24,6 @@ RSpec.describe "User", type: :system do
       let(:name) { "じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじ" }
 
       it "ユーザー登録に失敗すること" do
-        visit new_user_path
         fill_in "user_name", with: name
         fill_in "user_email", with: "example@mail.com"
         fill_in "user_password", with: "foobar"
