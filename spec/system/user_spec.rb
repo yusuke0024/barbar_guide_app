@@ -34,7 +34,7 @@ RSpec.describe "User", type: :system do
     end
 
     context "ユーザー名が５1文字以上のとき" do
-      let(:name) { "じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじ" }
+      let(:name) { "じゅげむだ" * 10 + "よ"}
 
       it "エラーになること" do
         fill_in "user_name", with: name
