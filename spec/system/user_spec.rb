@@ -64,5 +64,18 @@ RSpec.describe "User", type: :system do
         expect(page).to have_content "メールアドレスはすでに存在します"
       end
     end
+
+    context "メールアドレスが256文字以上のとき" do
+      let(:email) { "a" * 247 + "@mail.com" }
+
+      it "エラーになること" do
+        fill_in "user_name", with: user.name
+        fill_in "user_email", with: email
+        fill_in "user_password", with: user.password
+        click_on "登録"
+
+        expect(page).to have_content "メールアドレスは255文字以内で入力してください"
+      end
+    end
   end
 end
