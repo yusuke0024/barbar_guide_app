@@ -33,5 +33,18 @@ RSpec.describe "User", type: :system do
         expect(page).to have_content "ユーザー名は50文字以内で入力してください"
       end
     end
+
+    context "メールアドレスが空白のとき" do
+      let(:email) { "" }
+
+      it "ユーザー登録に失敗すること" do
+        fill_in "user_name", with: user.name
+        fill_in "user_email", with: email
+        fill_in "user_password", with: user.password
+        click_on "登録"
+
+        expect(page).to have_content "メールアドレスを入力してください"
+      end
+    end
   end
 end
