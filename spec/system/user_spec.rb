@@ -46,5 +46,23 @@ RSpec.describe "User", type: :system do
         expect(page).to have_content "メールアドレスを入力してください"
       end
     end
+
+    context "メールアドレスが一意でないとき" do
+      let(:dup_email) { user.email }
+
+      it "エラーになること" do
+        fill_in "user_name", with: user.name
+        fill_in "user_email", with: user.email
+        fill_in "user_password", with: user.password
+        click_on "登録"
+        visit new_user_path
+        fill_in "user_name", with: user.name
+        fill_in "user_email", with: dup_email
+        fill_in "user_password", with: user.password
+        click_on "登録"
+
+        expect(page).to have_content "メールアドレスはすでに存在します"
+      end
+    end
   end
 end
