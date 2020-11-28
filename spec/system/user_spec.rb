@@ -90,5 +90,18 @@ RSpec.describe "User", type: :system do
         expect(page).to have_content "メールアドレスは不正な値です"
       end
     end
+
+    context "パスワードが空白のとき" do
+      let(:password) { "" }
+
+      it "エラーになること" do
+        fill_in "user_name", with: user.name
+        fill_in "user_email", with: user.email
+        fill_in "user_password", with: password
+        click_on "登録"
+
+        expect(page).to have_content "パスワードを入力してください"
+      end
+    end
   end
 end
