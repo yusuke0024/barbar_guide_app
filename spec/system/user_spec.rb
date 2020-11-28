@@ -89,6 +89,7 @@ RSpec.describe "User", type: :system do
         click_on "登録"
 
         expect(page).to have_content "パスワードを入力してください"
+        expect(page).to_not have_content "パスワードは6文字以上で入力してください"
       end
     end
 
