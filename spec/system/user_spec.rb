@@ -12,6 +12,16 @@ RSpec.describe "User", type: :system do
       fill_in "user_password", with: "foobar"
     end
 
+    context "ユーザー名５０文字以内、メールアドレス不正ではないフォーマット、パスワード６文字以上のとき" do
+      it "正常に登録されること" do
+        expect {
+          click_on "登録"
+        }.to change(User, :count).by(1)
+
+        expect(current_path).to eq salons_path
+      end
+    end
+
     context "ユーザー名入力フォームが空白のとき" do
       let(:name) { "" }
 
