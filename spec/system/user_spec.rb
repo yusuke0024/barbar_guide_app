@@ -103,5 +103,18 @@ RSpec.describe "User", type: :system do
         expect(page).to have_content "パスワードを入力してください"
       end
     end
+
+    context "パスワードが5文字以下のとき" do
+      let(:password) { "penta" }
+
+      it "エラーになること" do
+        fill_in "user_name", with: user.name
+        fill_in "user_email", with: user.email
+        fill_in "user_password", with: password
+        click_on "登録"
+
+        expect(page).to have_content "パスワードは6文字以上で入力してください"
+      end
+    end
   end
 end
