@@ -48,7 +48,7 @@ RSpec.describe "User", type: :system do
     end
 
     context "メールアドレスが一意でないとき" do
-      let(:dup_email) { user.email }
+      let(:dup_email) { user.email.upcase }
 
       it "エラーになること" do
         fill_in "user_name", with: user.name
