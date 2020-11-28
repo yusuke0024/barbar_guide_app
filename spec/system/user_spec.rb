@@ -77,5 +77,18 @@ RSpec.describe "User", type: :system do
         expect(page).to have_content "メールアドレスは255文字以内で入力してください"
       end
     end
+
+    context "メールアドレスのフォーマットが不正なとき" do
+      let(:email) { "hoge@mail" }
+
+      it "エラーになること" do
+        fill_in "user_name", with: user.name
+        fill_in "user_email", with: email
+        fill_in "user_password", with: user.password
+        click_on "登録"
+
+        expect(page).to have_content "メールアドレスは不正な値です"
+      end
+    end
   end
 end
