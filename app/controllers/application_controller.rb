@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def redirect_if_already_logged_in
     if logged_in?
       flash[:danger] = "すでにログインしています"
-      redirect_to root_url
+      redirect_to salons_path
     end
   end
 end
