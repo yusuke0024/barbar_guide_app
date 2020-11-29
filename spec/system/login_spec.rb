@@ -22,7 +22,7 @@ RSpec.feature "Login", type: :system do
       click_button "ログインする"
 
       expect(page).to have_content "ログインする"
-      expect(page).to have_content "Dかパスワードが間違っているか、会員ではありません。"
+      expect(page).to have_content "IDかパスワードが間違っているか、会員ではありません。"
     end
   end
 end
