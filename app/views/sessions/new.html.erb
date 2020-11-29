@@ -1,1 +1,16 @@
 <h1>ログインページ</h1>
+
+<div>
+  <%= form_with url: sessions_path, method: :post, local: true do %>
+    <div>
+      <label>メールアドレス</label>
+      <input name="email" type="text" placeholder="メールアドレス">
+      <label>パスワード</label>
+      <input name="password" type="password" placeholder="パスワード">
+    </div>
+
+    <div">
+      <button type="">ログインする</button>
+    </div>
+  <% end %>
+</div>
