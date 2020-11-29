@@ -9,6 +9,7 @@ class Salons::ReviewsController < ApplicationController
     if @review.save
       redirect_to salon_path(@review.salon)
     else
+      @salon = @review.salon
       render :new
     end
   end
