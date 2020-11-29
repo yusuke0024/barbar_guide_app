@@ -9,3 +9,11 @@
     </li>
   </ul>
 </div>
+<h2>レビュー</h2>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <%= review.comment %>
+    </li>
+  <% end %>
+</ul>
