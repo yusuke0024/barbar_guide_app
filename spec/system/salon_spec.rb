@@ -10,7 +10,11 @@ RSpec.describe "Salon", type: :system do
 
     context "サロン名が20文字以内で住所が150文字以内で入力されているとき" do
       it "正常に登録されること" do
-        click_on "登録"
+        expect {
+          click_on "登録"
+        }.to change(Salon, :count).by(1)
+
+        expect(current_path).to eq new_salon_path
       end
     end
 
