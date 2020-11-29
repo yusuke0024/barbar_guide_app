@@ -3,6 +3,9 @@ class SalonsController < ApplicationController
     @salons = Salon.all
   end
 
+  def show
+  end
+
   def new
     @salon = Salon.new
   end
