@@ -1,17 +1,20 @@
 require "rails_helper"
 RSpec.describe "Salon", type: :system do
   describe "サロン新規登録機能" do
-    let(:salon) { FactoryBot.create(:salon) }
 
     before do
       visit new_salon_path
+      fill_in "salon_name", with: "THE BAR BAR"
+      fill_in "salon_address", with: "東京都千代田区丸の内1-8-1"
     end
 
     context "サロン名が20文字以内で住所が150文字以内で入力されているとき" do
       it "正常に登録されること" do
-        fill_in "salon_name", with: salon.name
-        fill_in "salon_address", with: salon.address
-        click_on "登録"
+        expect {
+          click_on "登録"
+        }.to change(Salon, :count).by(1)
+
+        expect(current_path).to eq new_salon_path
       end
     end
 
@@ -20,7 +23,6 @@ RSpec.describe "Salon", type: :system do
 
       it "エラーになること" do
         fill_in "salon_name", with: name
-        fill_in "salon_address", with: salon.address
         click_on "登録"
 
         expect(page).to have_content "サロン名を入力してください"
@@ -32,7 +34,6 @@ RSpec.describe "Salon", type: :system do
 
       it "エラーになること" do
         fill_in "salon_name", with: name
-        fill_in "salon_address", with: salon.address
         click_on "登録"
 
         expect(page).to have_content "サロン名は20文字以内で入力してください"
@@ -43,7 +44,6 @@ RSpec.describe "Salon", type: :system do
       let(:address) { "" }
 
       it "エラーになること" do
-        fill_in "salon_name", with: salon.name
         fill_in "salon_address", with: address
         click_on "登録"
 
@@ -55,7 +55,6 @@ RSpec.describe "Salon", type: :system do
       let(:address) { "東京" * 100 }
 
       it "エラーになること" do
-        fill_in "salon_name", with: salon.name
         fill_in "salon_address", with: address
         click_on "登録"
 
