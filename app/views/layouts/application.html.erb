@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <header>
+      <div>
+        <%= render 'shared/login_button' %>
+        <%= render 'shared/logout_button' %>
+      </div>
+    </header>
+
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name %>">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= msg %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
