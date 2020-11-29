@@ -1,5 +1,5 @@
 <h1>レビューを投稿する</h1>
-<%= form_with model: @reviews, url: salon_reviews_path(@salon), local: true do |f| %>
+<%= form_with model: [@salon, @review], local: true do |f| %>
   <div>
     <%= f.label :comment, "コメント" %>
     <%= f.text_field :comment %>
