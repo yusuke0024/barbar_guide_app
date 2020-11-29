@@ -12,4 +12,17 @@ RSpec.feature "Login", type: :system do
       expect(page).to have_content "サロン一覧表示"
     end
   end
+
+  context "無効な情報を入力したとき" do
+    it "ユーザーはログインに失敗すること" do
+      visit salons_path
+      click_on "ログインする", match: :first
+      fill_in "email", with: ""
+      fill_in "password", with: ""
+      click_button "ログインする"
+
+      expect(page).to have_content "ログインする"
+      expect(page).to have_content "Dかパスワードが間違っているか、会員ではありません。"
+    end
+  end
 end
