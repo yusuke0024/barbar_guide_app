@@ -13,7 +13,7 @@
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      <%= review.comment %>
+      <%= review.user_display_name %> : <%= review.comment %>
     </li>
   <% end %>
 </ul>
