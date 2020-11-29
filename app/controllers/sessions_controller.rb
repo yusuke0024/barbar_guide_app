@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+  before_action :redirect_if_already_logged_in, only: [:new, :create]
+  
   def create
     user = User.find_by(email: params[:email])
 
