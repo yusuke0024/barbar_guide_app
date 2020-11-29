@@ -6,6 +6,7 @@ class Salons::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.salon_id = params[:salon_id]
     if @review.save
       redirect_to salon_path(@review.salon)
     else
@@ -17,6 +18,6 @@ class Salons::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:salon_id, reviews: [:comment]).merge(user_id: current_user.id)
+    params.require(:review).permit(:comment).merge(user_id: current_user.id)
   end
 end
