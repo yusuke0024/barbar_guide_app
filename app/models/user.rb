@@ -9,8 +9,6 @@ class User < ApplicationRecord
 
   enum role: { normal: 0, admin: 1, }
 
-  delegate :set_cookie, :delete_cookie, to: :session
-
   #仮想のremember_token属性を定義
   attr_accessor :remember_token
 
