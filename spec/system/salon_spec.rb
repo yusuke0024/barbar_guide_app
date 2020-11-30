@@ -1,8 +1,37 @@
 require "rails_helper"
 RSpec.describe "Salon", type: :system do
+
+  describe "サロン登録ページ表示機能" do
+
+    context "ユーザーが管理者のとき" do
+      let(:user) { FactoryBot.create(:user, role: 1) }
+
+      it "サロン登録ページが表示されること" do
+        valid_login(user)
+        visit new_salon_path
+
+        expect(page).to have_content "サロン新規登録"
+      end
+    end
+
+    context "ユーザーが管理者ではないとき" do
+      let(:user) { FactoryBot.create(:user, role: 0) }
+
+      it "サロン登録ページが表示されないこと" do
+        valid_login(user)
+        visit new_salon_path
+
+        expect(page).to have_content "管理者ではありません"
+      end
+    end
+
+  end
+
   describe "サロン新規登録機能" do
+    let(:user) { FactoryBot.create(:user, role: 1) }
 
     before do
+      valid_login(user)
       visit new_salon_path
       fill_in "salon_name", with: "THE BAR BAR"
       fill_in "salon_address", with: "東京都千代田区丸の内1-8-1"

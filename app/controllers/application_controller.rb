@@ -20,4 +20,18 @@ class ApplicationController < ActionController::Base
       redirect_to salons_path
     end
   end
+
+  def redirect_if_yet_logged_in
+    unless logged_in?
+      flash[:danger] = "ログインしてください"
+      redirect_to salons_path
+    end
+  end
+
+  def redirect_if_normal_user
+    unless current_user.admin?
+      flash[:danger] = "管理者ではありません"
+      redirect_to salons_path
+    end
+  end
 end
