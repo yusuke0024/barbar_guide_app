@@ -3,6 +3,11 @@ class SalonsController < ApplicationController
     @salons = Salon.all
   end
 
+  def show
+    @salon = Salon.find(params[:id])
+    @reviews = @salon.reviews
+  end
+
   def new
     @salon = Salon.new
   end

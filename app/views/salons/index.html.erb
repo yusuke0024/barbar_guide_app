@@ -3,7 +3,7 @@
   <ul>
     <% @salons.each do |salon| %>
       <li>
-        <%= salon.name %>
+        <%= link_to salon.name, salon_path(salon.id) %>
       </li>
     <% end %>
   </ul>

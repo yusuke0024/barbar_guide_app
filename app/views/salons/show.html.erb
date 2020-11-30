@@ -1,0 +1,20 @@
+<h1>サロン詳細ページ</h1>
+<div>
+  <ul>
+    <li>
+      <%= @salon.name %>
+    </li>
+    <li>
+      <%= @salon.address %>
+    </li>
+  </ul>
+</div>
+<h2>レビュー</h2>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <%= review.user_display_name %> : <%= review.comment %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "レビューする", new_salon_review_path(@salon) %>
