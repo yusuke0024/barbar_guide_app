@@ -28,8 +28,10 @@ RSpec.describe "Salon", type: :system do
   end
 
   describe "サロン新規登録機能" do
+    let(:user) { FactoryBot.create(:user, role: 1) }
 
     before do
+      valid_login(user)
       visit new_salon_path
       fill_in "salon_name", with: "THE BAR BAR"
       fill_in "salon_address", with: "東京都千代田区丸の内1-8-1"
