@@ -1,12 +1,16 @@
 <h1>ログインページ</h1>
 
 <div>
-  <%= form_with url: sessions_path, method: :post, local: true do %>
+  <%= form_with url: sessions_path, method: :post, local: true do |f| %>
     <div>
       <label>メールアドレス</label>
       <input name="email" type="text" placeholder="メールアドレス">
       <label>パスワード</label>
       <input name="password" type="password" placeholder="パスワード">
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+      <% end %>
     </div>
 
     <div">
