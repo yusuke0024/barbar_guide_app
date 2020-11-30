@@ -16,7 +16,9 @@ class User < ApplicationRecord
 
   #ランダムに生成したトークンをremember_tokenに入れて、そこからハッシュ化してremember_digestをアップデート
   def set_remember_digest
+    #SecureRandom.urlsafe_base64 => ランダムなトークンを生成
     self.remember_token = SecureRandom.urlsafe_base64
+    #BCrypt::Password.create(引数) => 引数の文字列をハッシュ化
     update_attribute(:remember_digest, BCrypt::Password.create(remember_token))
   end
 
