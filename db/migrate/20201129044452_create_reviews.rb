@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.text :comment
       t.bigint :salon_id
       t.bigint :user_id
+      
       t.timestamps
     end
   end
