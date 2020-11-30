@@ -11,7 +11,7 @@ RSpec.describe "Review", type: :system do
       click_on "レビューする"
     end
 
-    context "コメントが入力されている場合" do
+    context "コメントが入力されているとき" do
       let(:comment) { "リラックスできて最高だった" }
 
       it "正常に投稿されること" do
