@@ -8,4 +8,36 @@ class User < ApplicationRecord
   has_many :reviews
 
   enum role: { normal: 0, admin: 1, }
+
+  delegate :set_cookie, :delete_cookie, to: :session
+
+  #仮想のremember_token属性を定義
+  attr_accessor :remember_token
+
+  #渡されたトークンのハッシュ値を返す(rails tutorialの分岐は現在テストで使用してないので省く)
+  def self.hash_value(token)
+    BCrypt::Password.create(token)
+  end
+
+  #ランダムなトークンを返す
+  def self.random_token
+    SecureRandom.urlsafe_base64
+  end
+
+  #ハッシュ化したトークンをremember_digestに入れる
+  def set_remember_digest
+    self.remember_token = User.random_token
+    update_attribute(:remember_digest, User.hash_value(remember_token))
+  end
+
+  #is_password(token)で渡されたトークンとユーザーのもつremember_digestを認証
+  def authenticated?(token)
+    #cookieだけが残ってしまうケースに起きるバグを回避
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(token)
+  end
+
+  def delete_remember_digest
+    update_attribute(:remember_digest, nil)
+  end
 end
