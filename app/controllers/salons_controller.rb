@@ -1,4 +1,7 @@
 class SalonsController < ApplicationController
+  before_action :redirect_if_yet_logged_in, only: [:new, :create]
+  before_action :redirect_if_normal_user, only: [:new, :create]
+
   def index
     @salons = Salon.all
   end
