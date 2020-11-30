@@ -24,5 +24,16 @@ RSpec.describe "Review", type: :system do
         expect(page).to have_content "yusukeさん : リラックスできて最高だった"
       end
     end
+
+    context "コメントが入力されてないとき" do
+      let(:comment) { "" }
+
+      it "投稿に失敗する事" do
+        fill_in "review_comment", with: comment
+        click_on "投稿"
+
+        expect(page).to have_content "コメントを入力してください"
+      end
+    end
   end
 end
