@@ -14,20 +14,10 @@ class User < ApplicationRecord
   #仮想のremember_token属性を定義
   attr_accessor :remember_token
 
-  #渡されたトークンのハッシュ値を返す(rails tutorialの分岐は現在テストで使用してないので省く)
-  def self.hash_value(token)
-    BCrypt::Password.create(token)
-  end
-
-  #ランダムなトークンを返す
-  def self.random_token
-    SecureRandom.urlsafe_base64
-  end
-
   #ハッシュ化したトークンをremember_digestに入れる
   def set_remember_digest
-    self.remember_token = User.random_token
-    update_attribute(:remember_digest, User.hash_value(remember_token))
+    self.remember_token = SecureRandom.urlsafe_base64
+    update_attribute(:remember_digest, BCrypt::Password.create(remember_token))
   end
 
   #is_password(token)で渡されたトークンとユーザーのもつremember_digestを認証
