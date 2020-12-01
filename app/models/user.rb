@@ -8,4 +8,26 @@ class User < ApplicationRecord
   has_many :reviews
 
   enum role: { normal: 0, admin: 1, }
+
+  #仮想のremember_token属性を定義
+  attr_accessor :remember_token
+
+  #ランダムに生成したトークンをremember_tokenに入れて、そこからハッシュ化してremember_digestをアップデート
+  def set_remember_digest
+    #SecureRandom.urlsafe_base64 => ランダムなトークンを生成
+    self.remember_token = SecureRandom.urlsafe_base64
+    #BCrypt::Password.create(引数) => 引数の文字列をハッシュ化
+    update_attribute(:remember_digest, BCrypt::Password.create(remember_token))
+  end
+
+  #is_password(token)で渡されたトークンとユーザーのもつremember_digestを認証
+  def authenticated?(token)
+    #cookieだけが残ってしまうケースに起きるバグを回避
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(token)
+  end
+
+  def delete_remember_digest
+    update_attribute(:remember_digest, nil)
+  end
 end
