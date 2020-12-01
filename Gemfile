@@ -31,7 +31,9 @@ gem 'rails-i18n'
 
 gem 'active_decorator'
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick'
+
+gem 'carrierwave'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
