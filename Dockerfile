@@ -16,6 +16,9 @@ RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RE
   && unzip /tmp/chromedriver_linux64.zip \
   && mv chromedriver /usr/local/bin/
 
+# Imagemagicをインストール
+RUN apt-get update && apt-get install -y imagemagick libmagick++-dev
+
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 
