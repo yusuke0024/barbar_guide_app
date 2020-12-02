@@ -20,21 +20,21 @@ class ApplicationController < ActionController::Base
   def redirect_if_already_logged_in
     if logged_in?
       flash[:danger] = "すでにログインしています"
-      redirect_to salons_path
+      redirect_to root_path
     end
   end
 
   def redirect_if_yet_logged_in
     unless logged_in?
       flash[:danger] = "ログインしてください"
-      redirect_to salons_path
+      redirect_to root_path
     end
   end
 
   def redirect_if_normal_user
     unless current_user.admin?
       flash[:danger] = "管理者ではありません"
-      redirect_to salons_path
+      redirect_to root_path
     end
   end
 end
