@@ -16,6 +16,11 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-.main-container {
-  background-image: image-url('home_background_image.jpeg');
+.jumbotron-extend {
+    background-image: image-url('home_background_image.jpeg');
+    position: relative;
+    height: 100vh;
+    min-height: 300px;
+    background-size: contain;
+    background-repeat:no-repeat
 }
