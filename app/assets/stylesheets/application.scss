@@ -16,6 +16,10 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+.body {
+
+}
+
 .jumbotron-extend {
     background-image: image-url('home_background_image.jpeg');
     position: relative;
@@ -27,6 +31,5 @@
 .home_title {
   position: absolute;
   top: 50%;
-  left: 25%;
-  text-align: center;
+  left: 15%;
 }
