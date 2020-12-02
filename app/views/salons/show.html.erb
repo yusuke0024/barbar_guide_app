@@ -7,6 +7,11 @@
     <li>
       <%= @salon.address %>
     </li>
+    <% if @salon.img? %>
+      <%= image_tag @salon.img.url %>
+    <% else %>
+      "noimage"
+    <% end %>
   </ul>
 </div>
 <h2>レビュー</h2>
