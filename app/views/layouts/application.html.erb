@@ -11,16 +11,15 @@
 
   <body>
     <header>
-      <div>
-        <%= link_to "barbar_guide", root_path %>
-      </div>
-      <div>
-        <%= link_to "サロン一覧", salons_path %>
-      </div>
-      <div>
-        <%= render 'shared/login_button' %>
-        <%= render 'shared/logout_button' %>
-      </div>
+      <h1>
+        <%= link_to "barbar_guide", root_path, {class: "title-link"} %>
+      </h1>
+      <nav class="pc-nav">
+          <ul>
+              <li><%= link_to "サロン一覧", salons_path %></li>
+              <li><%= render 'shared/login_button' %><%= render 'shared/logout_button' %></li>
+          </ul>
+      </nav>
     </header>
 
     <% flash.each do |name, msg| %>
