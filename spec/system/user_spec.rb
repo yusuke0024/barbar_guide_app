@@ -61,7 +61,7 @@ RSpec.describe "User", type: :system do
       end
     end
 
-    context "メールアドレスが一意でないとき" do
+    context "同じメールアドレスで2回登録しようとしたとき" do
       let(:email) { "example1@mail.com" }
 
       before do
