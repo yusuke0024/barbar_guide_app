@@ -56,19 +56,17 @@ li {
 body {
    margin: 0;
    padding: 0;
-   background-color: #333333;
+   background-color: #28385E;
 }
 
 .jumbotron-extend {
-    background-image: image-url('home_background_image.jpeg');
+    background-image: image-url('background-img2.jpg');
     position: relative;
     height: 100vh;
     min-height: 300px;
-    background-size: contain;
+    background-size: cover;
     background-repeat:no-repeat
 }
 .home_title {
-  position: absolute;
-  top: 50%;
-  left: 15%;
+  padding: 15px;
 }
