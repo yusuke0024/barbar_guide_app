@@ -11,15 +11,17 @@
 
   <body>
     <header>
-      <h1>
-        <%= link_to "barbar_guide", root_path, {class: "title-link"} %>
-      </h1>
-      <nav class="pc-nav">
+      <div class="container">
+        <h1>
+          <%= link_to "Barbar Guide", root_path, {class: "title-link"} %>
+        </h1>
+        <nav class="pc-nav">
           <ul>
-              <li><%= link_to "サロン一覧", salons_path %></li>
-              <li><%= render 'shared/login_button' %><%= render 'shared/logout_button' %></li>
+            <li><%= link_to "salons", salons_path %></li>
+            <li><%= render 'shared/login_button' %><%= render 'shared/logout_button' %></li>
           </ul>
-      </nav>
+        </nav>
+      </div>
     </header>
 
     <% flash.each do |name, msg| %>
@@ -30,5 +32,10 @@
     <% end %>
 
     <%= yield %>
+
+    <footer>
+      <div class="container">
+      </div>
+    </footer>
   </body>
 </html>
