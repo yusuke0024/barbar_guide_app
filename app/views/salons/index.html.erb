@@ -1,12 +1,14 @@
-<div class="container">
-  <h1>サロン一覧表示</h1>
-  <div>
-    <ul>
-      <% @salons.each do |salon| %>
-        <li>
-          <%= link_to salon.name, salon_path(salon.id) %>
-        </li>
-      <% end %>
-    </ul>
+<div class="salons-index-wrapper">
+  <div class="container">
+    <h1>サロン一覧表示</h1>
+    <div>
+      <ul>
+        <% @salons.each do |salon| %>
+          <li>
+            <%= link_to salon.name, salon_path(salon.id) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
