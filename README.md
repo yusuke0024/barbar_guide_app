@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### メンズヘアサロン界のミシュランガイドのようなガイドサイトを目指して作ってます。
 
-Things you may want to cover:
+#### 開発前に検証をしています
 
-* Ruby version
+1.アイデア検証
+2.課題の検証
+3.ソリューションの検証
 
-* System dependencies
+- 上記ステップに検証ツールとして使用
+  - リーンキャンバス
+  - ジャベリンボード
+  - ペルソナシート
+  - エンパシーマップ
+  - カスタマージャーニー
 
-* Configuration
+他にも実際にユーザーになりえる人へのインタビュー等も行っています。
 
-* Database creation
+#### 使用技術
+Ruby on Rails
+HTML CSS
+bootstrap
+RSpec
+Docker
 
-* Database initialization
+#### 機能
+サロン、管理ユーザー登録機能
+セッションによるログイン
+cookieによるログイン永続化
+レビュー投稿機能
+画像投稿機能
+DBテーブルのリレーション管理
+RSpecによる単体、統合テスト
 
-* How to run the test suite
+#### その他開発手法等
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Dockerを使っての環境構築
+RESTの原則を意識した開発
+GitHubでのバージョン管理
+(ブランチを分けるプルリクエスト出す等)
