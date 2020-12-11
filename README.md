@@ -18,11 +18,11 @@
 他にも実際にユーザーになりえる人へのインタビュー等も行っています。
 
 #### 使用技術
-Ruby on Rails
-HTML CSS
-bootstrap
-RSpec
-Docker
+- Ruby on Rails
+- HTML CSS
+- bootstrap
+- RSpec
+- Docker
 
 #### 機能
 サロン、管理ユーザー登録機能
