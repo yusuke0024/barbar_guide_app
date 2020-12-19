@@ -14,7 +14,6 @@
  *= require_self
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
 
 /* A CSS Reset */
 
@@ -115,3 +114,5 @@ footer {
 .salons-index-wrapper {
   min-height: 900px
 }
+
+@import "bootstrap";
